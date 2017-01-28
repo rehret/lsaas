@@ -1,12 +1,12 @@
 body {
     text-align: center;
     font-family: sans-serif;
-    margin: 0;
+    max-width: 1000px;
+    margin: 0 auto;
     padding: 20px 0;
 }
 
 img {
-    min-height: calc(80vw * (9 / 16)); /* should be around the height of the image */
     width: 80%;
 }
 
