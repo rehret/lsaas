@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link type="text/css" rel="stylesheet" href="style/lsaas.css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+        <script src="app/lsaas.js"></script>
+    </head>
+    <body ng-app="lsaas" ng-controller="lsaasController" ng-cloak>
+        <img ng-src="{{imageSrc}}" />
+        <input class="url" type="text" ng-model="imageSrc" readonly="true" select-on-click />
+        <form>
+            <textarea ng-model="inputText" placeholder={{placeholder}}></textarea>
+            <input class="submit" type="submit" ng-click="updateImage(inputText)" />
+        </form>
+    </body>
+</html>

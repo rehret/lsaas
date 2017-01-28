@@ -5,12 +5,12 @@
 (() => {
     "use strict";
     var express = require("express");
-    var api = require("./api");
+    var router = require("./router");
     var port = process.argv[2] || 8000;
 
     var app = express();
 
-    app.all("*", api);
+    app.use(router);
 
     app.listen(port, () => {
         console.log(`Server listening on :${port}`);
