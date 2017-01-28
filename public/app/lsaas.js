@@ -5,7 +5,7 @@
         $scope.imageSrc = getImageUrl($scope.placeholder);
 
         function getImageUrl(text) {
-            return $window.location.origin + $window.location.pathname + "api/?text=" + encodeURIComponent(text);
+            return $window.location.origin + $window.location.pathname + "api/" + btoa(text);
         }
 
         $scope.updateImage = function(text) {

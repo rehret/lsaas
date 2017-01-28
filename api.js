@@ -64,8 +64,8 @@
         return image;
     }
 
-    router.get("/", (req, res) => {
-        var text =  req.query.text || "";
+    router.get("/:text64", (req, res) => {
+        var text =  (req.params.text64 ? new Buffer(req.params.text64, "base64").toString() : "");
 
         res.contentType("image/jpeg");
 
