@@ -9,7 +9,9 @@
         }
 
         $scope.updateImage = function(text) {
-            $scope.imageSrc = getImageUrl(text);
+            if (text.trim().length > 0) {
+                $scope.imageSrc = getImageUrl(text);
+            }
         };
     }])
     .directive('selectOnClick', ['$window', function ($window) {
