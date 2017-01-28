@@ -1,13 +1,17 @@
 {
   "name": "lsaas",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Lemony Snicket as a Service",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rehret/lsaas"
+  },
+  "author": "Randy Ehret <randyehret@gmail.com>",
+  "license": "MIT",
   "dependencies": {
     "express": "^4.14.0",
     "jimp": "^0.2.27"
