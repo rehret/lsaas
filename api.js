@@ -12,6 +12,17 @@
     var imagePath = `${__dirname}/lemonysnicket.jpg`;
     var xPadding = 10;
 
+    var cleanImage;
+    var captionFont;
+
+    var imageLoaded = jimp.read(imagePath).then((image) => {
+        cleanImage = image;
+    });
+
+    var fontLoaded = jimp.loadFont(jimp.FONT_SANS_32_WHITE).then((font) => {
+        captionFont = font;
+    });
+
     // This function is copied from the Jimp implmentation
     // (https://github.com/oliver-moran/jimp/blob/master/index.js#L2381)
     // License: https://github.com/oliver-moran/jimp/blob/master/LICENSE
@@ -69,28 +80,22 @@
 
         res.contentType("image/jpeg");
 
-        jimp.read(imagePath).then((image) => {
-            jimp.loadFont(jimp.FONT_SANS_32_WHITE).then((font) => {
-                var width = image.bitmap.width - (2 * xPadding);
-                image = writeTextToImage(image, font, text, width);
+        Promise.all([imageLoaded, fontLoaded]).then(() => {
+            var image = new jimp(cleanImage);
+            var width = image.bitmap.width - (2 * xPadding);
+            image = writeTextToImage(image, captionFont, text, width);
 
-                image.getBuffer(jimp.AUTO, (error, buffer) => {
-                    if (!error) {
-                        res.end(buffer);
-                    } else {
-                        console.error(`Error: ${error}`);
-                        res.end();
-                    }
-                });
-            })
-            .catch((error) => {
-                console.error(`Error: ${error}`);
-                res.end();
+            image.getBuffer(jimp.AUTO, (error, buffer) => {
+                if (!error) {
+                    res.end(buffer);
+                } else {
+                    console.error(`Error: ${error}`);
+                    res.end();
+                }
             });
         })
         .catch((error) => {
-            console.error(`Error: ${error}`)  ;
-            res.end();
+            console.error(error);
         });
     });
 
