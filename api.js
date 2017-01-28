@@ -9,7 +9,7 @@
 
     var router = express.Router();
 
-    var imagePath = "lemonysnicket.jpg";
+    var imagePath = `${__dirname}/lemonysnicket.jpg`;
     var xPadding = 10;
 
     // This function is copied from the Jimp implmentation
