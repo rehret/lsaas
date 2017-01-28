@@ -10,7 +10,7 @@
     var router = express.Router();
 
     router.use("/api", api);
-    router.use(express.static("public"));
+    router.use(express.static(__dirname + "/public"));
 
     module.exports = router;
 })();
